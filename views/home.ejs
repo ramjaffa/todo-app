@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>
+            <%= title%>
+        </title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1>
+            TODO APP
+        </h1>
+        <div class = "description">
+            <div class = "title">
+                DESCRIPTION
+            </div>
+            <form action="/create-todo" method = "POST" id ="form">
+                <div id="text-content">
+                    <input type = "text" id="text" name="description">
+                    
+                </div>
+                <div class = "attributes">
+                <div id = "dropdown" name= "dropdown">
+                    <select name="category" id="">
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="School">School</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div id="date">
+                    <input class = "time" type="date" id="appt" name="date"
+                                min="09:00" max="18:00" >
+                </div>
+            </div>
+            <button type= submit class = "button">Todo</button>
+            <input class = "button" type="submit" value="Delete" id="">
+            </form>
+        </div>
+
+        <div class = "todos-list-container">
+            <ul>
+                <% for(let i of contact_list) {%>
+                    <li class="todo">
+                        <div class="details">
+                            <p><%= i.description%></p>
+                            <p><%= i.date%></p>
+                            <p><%= i.category%></p>
+                            <div class="delete-button">
+                                <a href="/delete-contact/?id=<%= i._id %>">
+                                    <i class = "fas fa-window-close"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <% }%>
+            </ul>
+        </div>
+
+        <script type = "text/javascript" src = "/js/home.js">
+        </script>
+    </body>
+</html>
